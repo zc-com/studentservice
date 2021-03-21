@@ -1,21 +1,26 @@
-package cc.wuque.servlect; /**
- * @Author 无缺
- * @Date 2021/3/21 13:31
- */
+package cc.wuque.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.imageio.ImageIO;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
-@WebServlet("/checkCode")
-public class checkCodeServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+/**
+ * @Author 无缺
+ * @Date 2021/3/21 13:58
+ */
+@Controller
+public class checkCodeController {
+
+    @RequestMapping("/checkCode")
+    public void checkCode(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //服务器通知浏览器不要缓存
         response.setHeader("pragma","no-cache");
         response.setHeader("cache-control","no-cache");
@@ -25,7 +30,7 @@ public class checkCodeServlet extends HttpServlet {
         //参数一：长
         //参数二：宽
         //参数三：颜色
-        int width = 80;
+        int width = 100;
         int height = 30;
         BufferedImage image = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
 
@@ -73,9 +78,5 @@ public class checkCodeServlet extends HttpServlet {
         }
         return sb.toString();
 
-    }
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request,response);
     }
 }
