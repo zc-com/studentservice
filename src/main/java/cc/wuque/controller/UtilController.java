@@ -17,8 +17,16 @@ import java.util.Random;
  * @Date 2021/3/21 13:58
  */
 @Controller
-public class checkCodeController {
+public class UtilController {
 
+    /**
+     * 获取一个随机的6位验证码
+     * 图片大小：100 x 30
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @RequestMapping("/checkCode")
     public void checkCode(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //服务器通知浏览器不要缓存
@@ -77,6 +85,5 @@ public class checkCodeController {
             sb.append(c);
         }
         return sb.toString();
-
     }
 }
