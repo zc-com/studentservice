@@ -16,7 +16,7 @@ import java.util.Random;
 public class checkCodeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//服务器通知浏览器不要缓存
+        //服务器通知浏览器不要缓存
         response.setHeader("pragma","no-cache");
         response.setHeader("cache-control","no-cache");
         response.setHeader("expires","0");
@@ -76,6 +76,6 @@ public class checkCodeServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request,response);
     }
 }
